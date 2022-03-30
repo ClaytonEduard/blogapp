@@ -281,5 +281,18 @@ router.post("/postagem/edit", (req, res) => {
       res.redirect("/admin/postagens");
     });
 });
+// modulo de deletar sem ter um formulario
+router.get("/postagens/deletar/:id", (req, res) => {
+  Postagem.remove({ _id: req.params.id })
+    .then(() => {
+      req.flash("success_msg", "Postagem deletada com sucesso");
+      res.redirect("/admin/postagens");
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Erro Interno: " + err);
+      res.redirect("/admin/postagens");
+    });
+});
+
 //exporta o modulo
 module.exports = router;

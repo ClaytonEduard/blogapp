@@ -15,7 +15,7 @@
         <a href="/admin/postagens/edit/{{_id}}">
             <button class="btn btn-success mt-4">Editar postagem</button></a>
 
-        <form action="/admin/postagens/deletar" method="POST">
+        <form action="/admin/postagens/deletar/{{_id}}" method="get">
             <input type="hidden" name="id" value="{{_id}}" class="form-control" />
             <button type="submit" class="btn btn-danger mt-2" class="form-control">Deletar postagem</button>
 
