@@ -6,8 +6,9 @@
 
 <div class="card">
     <div class="card-body">
-        <h4>Nova postagem:</h4>
-        <form action="/admin/postagens/nova" method="POST">
+        <h4>Editar postagem:</h4>
+        <form action="/admin/postagem/edit" method="POST">
+            <input type="hidden" value="{{postagem._id}}" name="id">
             <label for="titulo">Título: </label>
             <input type="text" name="titulo" class="form-control" value="{{postagem.titulo}}">
             <label for="slug">Slug: </label>
@@ -25,7 +26,7 @@
                 <option value="0">Nenhuma categoria registrada</option>
                 {{/each}}
             </select>
-            <button class="btn btn-success mt-2" type="submit">Criar postagem</button>
+            <button class="btn btn-success mt-2" type="submit">Editar postagem</button>
         </form>
     </div>
 </div>

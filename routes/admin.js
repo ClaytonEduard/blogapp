@@ -233,7 +233,10 @@ router.get("/postagens/edit/:id", (req, res) => {
     .then((postagem) => {
       Categoria.find()
         .then((categorias) => {
-          res.render("admin/editpostagens",{categorias:categorias, postagem:postagem});
+          res.render("admin/editpostagens", {
+            categorias: categorias,
+            postagem: postagem,
+          });
         })
         .catch((err) => {
           req.flash(
@@ -253,6 +256,30 @@ router.get("/postagens/edit/:id", (req, res) => {
 });
 
 // atualizar os dados da postagem depois de carregados
+router.post("/postagem/edit", (req, res) => {
+  Postagem.findOne({ _id: req.body.id })
+    .then((postagem) => {
+      postagem.titulo = req.body.titulo;
+      postagem.descricao = req.body.descricao;
+      postagem.slug = req.body.slug;
+      postagem.conteudo = req.body.conteudo;
+      postagem.categoria = req.body.categoria;
 
+      postagem
+        .save()
+        .then(() => {
+          req.flash("success_msg", "Postagem editada com sucesso");
+          res.redirect("/admin/postagens");
+        })
+        .catch((err) => {
+          req.flash("error_msg", "Erro Interno: " + err);
+          res.redirect("/admin/postagens");
+        });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao salvar a edição: " + err);
+      res.redirect("/admin/postagens");
+    });
+});
 //exporta o modulo
 module.exports = router;
