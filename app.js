@@ -22,7 +22,7 @@ const Postagem = mongoose.model("postagens");
 require("./models/Categoria");
 const Categoria = mongoose.model("categorias");
 
-const usuarios = require("./routes/usuarios");
+const usuarios = require("./routes/usuario");
 
 //configurações
 // Configurar sessão- serve para a criar e configura os Midllewares
