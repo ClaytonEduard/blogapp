@@ -22,6 +22,8 @@ const Postagem = mongoose.model("postagens");
 require("./models/Categoria");
 const Categoria = mongoose.model("categorias");
 
+const usuarios = require("./routes/usuarios");
+
 //configurações
 // Configurar sessão- serve para a criar e configura os Midllewares
 //sessão
@@ -145,7 +147,7 @@ app.get("/404", (req, res) => {
 });
 
 app.use("/admin", admin);
-
+app.use("/usuarios", usuarios);
 //outros
 const PORT = 8080;
 app.listen(PORT, () => {
