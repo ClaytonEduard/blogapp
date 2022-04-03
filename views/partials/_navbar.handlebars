@@ -11,15 +11,26 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/categorias">Categoria</a>
+          <a class="nav-link" aria-current="page"  href="/categorias">Categoria</a>
         </li>
         {{#if user}}
-        {{else}}
         <li class="nav-item">
-          <a class="nav-link disabled" href="/usuarios/login">Login</a>
+          <a class="nav-link " href="/admin/categorias">Add Categoria</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="/usuarios/registro">Registro</a>
+          <a class="nav-link" href="/admin/postagens">Add Postagem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/usuarios/logout">Sair</a>
+        </li>
+        <li class="nav-item"> <a class="nav-link">Usurário Logado: {{user.nome}}</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/usuarios/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/usuarios/registro">Registro</a>
         </li>
         {{/if}}
       </ul>

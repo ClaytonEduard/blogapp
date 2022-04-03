@@ -106,4 +106,11 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
+// rota de logout
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.flash("success_msg", "Delogado com sucesso");
+  res.redirect("/");
+});
+
 module.exports = router;
