@@ -49,6 +49,10 @@ app.use((req, res, next) => {
   //variaveis globais usa-se o .locals
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
+  //variavel global para erro de login
+  res.locals.error = req.flash("error");
+  // armazena os dados do usuario logado
+  res.locals.user = req.user || null;
   next();
 });
 
