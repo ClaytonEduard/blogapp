@@ -89,4 +89,10 @@ router.post("/registro", (req, res) => {
   }
 });
 
+// rota do formulario de login
+
+router.get("/login", (req, res) => {
+  res.render("usuarios/login");
+});
+
 module.exports = router;

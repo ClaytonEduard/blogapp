@@ -23,6 +23,8 @@ require("./models/Categoria");
 const Categoria = mongoose.model("categorias");
 
 const usuarios = require("./routes/usuario");
+const passport = require("passport");
+require("./config/auth")(passport);
 
 //configurações
 // Configurar sessão- serve para a criar e configura os Midllewares
@@ -34,6 +36,12 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+//definindo o controle de login
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 //flash
 app.use(flash());
 //Midllewares
